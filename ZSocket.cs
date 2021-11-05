@@ -181,7 +181,7 @@ namespace ZeroMQ
 				throw new ArgumentException("IsNullOrWhiteSpace", "endpoint");
 			}
 
-			using (var endpointPtr = DispoIntPtr.AllocString(endpoint))
+			using (var endpointPtr = DispoIntPtr.AllocUtf8String(endpoint))
 			{
 				if (-1 == zmq.bind(_socketPtr, endpointPtr))
 				{
@@ -220,7 +220,7 @@ namespace ZeroMQ
 				throw new ArgumentException("IsNullOrWhiteSpace", "endpoint");
 			}
 
-			using (var endpointPtr = DispoIntPtr.AllocString(endpoint))
+			using (var endpointPtr = DispoIntPtr.AllocUtf8String(endpoint))
 			{
 				if (-1 == zmq.unbind(_socketPtr, endpointPtr))
 				{
@@ -259,7 +259,7 @@ namespace ZeroMQ
 				throw new ArgumentException("IsNullOrWhiteSpace", "endpoint");
 			}
 
-			using (var endpointPtr = DispoIntPtr.AllocString(endpoint))
+			using (var endpointPtr = DispoIntPtr.AllocUtf8String(endpoint))
 			{
 				if (-1 == zmq.connect(_socketPtr, endpointPtr))
 				{
@@ -297,7 +297,7 @@ namespace ZeroMQ
 				throw new ArgumentException("IsNullOrWhiteSpace", "endpoint");
 			}
 
-			using (var endpointPtr = DispoIntPtr.AllocString(endpoint))
+			using (var endpointPtr = DispoIntPtr.AllocUtf8String(endpoint))
 			{
 				if (-1 == zmq.disconnect(_socketPtr, endpointPtr))
 				{
@@ -1076,7 +1076,7 @@ namespace ZeroMQ
 			}
 
 			int optionLength;
-			using (var optionValue = DispoIntPtr.AllocString(value, out optionLength))
+			using (var optionValue = DispoIntPtr.AllocUtf8String(value, out optionLength))
 			{
 				return SetOption(option, optionValue, optionLength);
 			}

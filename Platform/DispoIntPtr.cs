@@ -12,6 +12,7 @@ namespace ZeroMQ.lib
 		private delegate DispoIntPtr AllocStringNativeDelegate(string str, out int byteCount);
 
 		private static readonly AllocStringNativeDelegate AllocStringNative = Ansi.AllocStringNative;
+		private static readonly AllocStringNativeDelegate AllocUtf8StringNative = Utf8.AllocStringNative;
 
 		/* static DispoIntPtr() {
 			// Platform.SetupPlatformImplementation(typeof(DispoIntPtr));
@@ -35,6 +36,17 @@ namespace ZeroMQ.lib
 		{
 			return AllocStringNative(str, out byteCount);
 		}
+
+		public static DispoIntPtr AllocUtf8String(string str)
+        {
+			int byteCount;
+			return AllocUtf8String(str, out byteCount);
+        }
+
+		public static DispoIntPtr AllocUtf8String(string str, out int byteCount)
+        {
+			return AllocUtf8StringNative(str, out byteCount);
+        }
 
 		public static implicit operator IntPtr(DispoIntPtr dispoIntPtr)
 		{

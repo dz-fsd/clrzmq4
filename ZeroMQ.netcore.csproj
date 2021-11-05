@@ -2,13 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	<RootNamespace>ZeroMQ</RootNamespace>
-	<AssemblyName>ZeroMQ</AssemblyName>
-	<AssemblyOriginatorKeyFile>ZeroMQ.snk</AssemblyOriginatorKeyFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>ZeroMQ</RootNamespace>
+    <AssemblyName>ZeroMQ</AssemblyName>
+    <AssemblyOriginatorKeyFile>ZeroMQ.snk</AssemblyOriginatorKeyFile>
     <DefaultItemExcludes>$(DefaultItemExcludes);AssemblyInfo.cs;ZGuideExamples\**\*</DefaultItemExcludes>
+    <PackageId>MMZeroMQ</PackageId>
+    <Version>4.1.0.31-2</Version>
+    <Authors>metadings, Pieter Hintjens, Martin Sustrik</Authors>
+    <Company>MICROMINE</Company>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)/amd64/libzmq.dll" Link="libzmq.dll">
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
   </PropertyGroup>
